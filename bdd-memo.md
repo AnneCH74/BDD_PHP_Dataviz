@@ -106,3 +106,139 @@ Concernant les associations :
   création d’une table dont la clé primaire est composée des clés étrangères référençant les relations correspondant aux entités liées par
   l’association.
   Les éventuelles propriétés de l’association deviennent des attributs de la relation.
+
+
+
+### Itération 2 : phase d'intégration SQL
+
+#### Initiation au SQL
+
+**Quelques définitions pour commencer :**
+
+**SQL** : Structured Query Language. Il permet d'interroger une base de données relationnelle.
+
+**Base de données relationnelles** : information organisée dans des tableaux à deux dimensions appelés des relations ou des tables
+
+
+
+
+
+- Comment créer une base de données ?
+En utilisant la commande CREATE TABLE + nom de la table
+
+- Comment faire un commentaire ?
+Deux possibilités :
+
+Soit -- + le commentaire
+
+Soit /* + entrée + le commentaire + entrée + */ + entrée
+
+
+- Comment créer une table et des colonnes ?
+
+En utilisant CREATE TABLE + nom de la table ( nom et paramètres des colonnes)
+
+Exemple : création d'une table avec 4 colonnes ("title" + "content" + "category" + "createdAt")
+
+CREATE TABLE posts (title VARCHAR(150), content TEXT, category VARCHAR(50), createdAt DATETIME);
+
+
+- Listez les types de données que vous utiliserez le plus souvent.
+VARCHAR, DATATIME, INT , BOOLEAN, FLOAT, TEXT
+
+
+- Listez des contraintes utiles pour vos colonnes :
+
+Garantir qu'aucune valeur en double ne soit saisi dans des colonnes spécifiques.
+Nombre de caractères lorsque c'est possible de les paramétrer (par exemple avec VARCHAR)
+
+- comment préciser qu'une valeur est obligatoire pour une colonne ?
+
+En utilisant NOT NULL
+
+- comment définir l'id d'une table ?
+En lui attribuant le paramère PRIMARY KEY. 
+Par exemple : 
+id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ 
+
+- Comment préciser que la valeur d'une colonne doit être unique ?(pour une adresse email par
+  exemple)
+
+Avec l'option UNIQUE (ce champ ne peut pas avoir la même valeur en double).
+
+- Comment insérer des données dans une table ?
+
+En insérant un fichier .sql contenant les instructions adéquates
+
+- Comment récupérer les données insérées ?
+
+En les important
+
+- Comment ne sélectionner qu'un certain nombre de résultats ?
+
+Avec la clause LIMIT via une requête SQL.
+
+- Comment trier les résultats ?
+
+Il est possible en SQL d'organiser les résultats grâce à la clause ORDER BY. La clause ORDER BY est suivie des mots clés ASC ou DESC, qui précisent respectivement si le tri se fait de manière croissante (par défaut) ou décroissante
+
+
+- Comment filtrer les données et chaîner les conditions de filtres ?
+
+Pour filtrer il faut utiliser la fonction FILTER
+Pour chaîner les conditions il faut les concaténer grâce à la fonction CONCAT()
+
+
+- Comment filtrer une colonne avec une valeur commençant par un certain caractère ?
+
+Avec l'opérateur LIKE =>
+SELECT *
+FROM table
+WHERE colonne LIKE modele
+
+
+
+- A quoi servent les INDEX ? Comment en créer ?
+
+L'index est utile pour accélérer l'exécution d'une requête SQL qui lit des données et ainsi améliorer les performances d'une application utilisant une base de données
+
+On peut créer un index avec la commande CREATE INDEX =>
+CREATE INDEX `index_nom` ON `table`;
+
+
+- Comment créer une relation entre 2 tables ?
+
+la commande LEFT JOIN , est un type de jointure commune pour lier plusieurs tables entre-elles dans une même requête. Cette commande retourne tous les enregistrements de la table première table, celle de gauche (left), avec la correspondance dans la deuxième table si la condition est respectée
+
+
+- Comment sélectionner les données de plusieurs tables ?
+Au moyen de jointures qui mettent en relation deux (ou plus) tables afin de rechercher la réponse à des interrogations. Une jointure permet donc de combiner les colonnes de plusieurs tables.
+
+Jointure interne =>
+SELECT ...
+FROM   <table gauche>
+[INNER]JOIN <table droite>
+ON <condition de jointure>
+
+Jointure externe =>
+SELECT ...
+FROM   <table gauche>
+LEFT | RIGHT | FULL OUTER JOIN <table droite>
+ON condition de jointure
+
+
+- Comment ne sélectionner que certaines colonnes et les renommer dans la liste de résultats ?
+
+Pour ne sélectionner que certaines colonnes et les renommer dans la liste de résultats en SQL, vous pouvez utiliser la clause SELECT. Voici un résumé des étapes pour accomplir cela :
+Écrivez votre requête SELECT : Commencez par écrire la requête SELECT pour sélectionner les données souhaitées dans une table.
+
+Liste des colonnes : Spécifiez les colonnes que vous souhaitez sélectionner en les énumérant après le mot-clé SELECT. Vous pouvez utiliser le symbole "*" pour sélectionner toutes les colonnes ou spécifier les noms des colonnes individuellement.
+Renommez les colonnes : Pour renommer une colonne dans la liste de résultats, utilisez le mot-clé AS suivi du nouveau nom que vous souhaitez donner à la colonne. Par exemple, SELECT nom AS nom_complet renommera la colonne "nom" en "nom_complet" dans la liste de résultats.
+
+Exécutez la requête : Exécutez la requête SELECT avec les colonnes sélectionnées et renommées pour obtenir les résultats souhaités.
+En utilisant la clause SELECT et l'option AS, vous pouvez spécifier les colonnes que vous souhaitez sélectionner et leur attribuer des noms alternatifs dans la liste de résultats. Cela vous permet de personnaliser la présentation des données renvoyées par votre requête.
+
+- Comment supprimer une table et une base de données ?
+
+DROP TABLE nomDeLaTable 
