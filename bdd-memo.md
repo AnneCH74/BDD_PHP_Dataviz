@@ -242,3 +242,24 @@ En utilisant la clause SELECT et l'option AS, vous pouvez spécifier les colonne
 - Comment supprimer une table et une base de données ?
 
 DROP TABLE nomDeLaTable 
+
+
+#### 2.5 — Pour aller plus loin : les différents SGBD
+
+Les différents types de BDD et leurs avantages sont :
+1) KEY-VALUE : simplicité de la strucuture du modèle
+2) WIDE COLUMN : capacité à analyser rapidement un très gros volume de données (très utile en big data)
+3) DOCUMENT : unité d'information et adaptation à la distribution. Comme tout est compris dans la structure cela évite de faire des jointures pour reconstituer l'information car elle n'est plus dispersée dans plusieurs tables.
+4) RELATIONAL : utiliser la logique ordinaire pour accéder aux données.
+5) GRAPH : accent mis sur les arêtes d'un modèle orienté graphes = ces bases de données représentent un moyen puissant de comprendre les relations les plus complexes entre les données. Cette manière de stocker les relations permet également une exécution rapide des requêtes.
+6) SEARCH : la visibilité, le trafic sur un site et sur le point de vente, la mobilité.
+7) MULTI-MODEL : différents langages d'interrogation et modèles de données sont conservés avec le même système de stockage. Les bases de données multi-modèles sont à ce titre plus flexibles et moins coûteuses à construire et entretenir.
+
+Les solutions de BDD pour chaque type de base sont :
+1) KEY-VALUE : Redis et Memcached
+2) WIDE COLUMN : Cassandra et Apache HBase
+3) DOCUMENT : MongoDB, Firestore, CouchDB
+4) RELATIONAL : MySQL, Postgres, SQL Server, CockroachDB
+5) GRAPH : Neo4j, DGraph, Janus Graph
+6) SEARCH : ElasticSearch, Algolia, MeiliSearch
+7) MULTI-MODEL : FaunaDB, CosmosDB
